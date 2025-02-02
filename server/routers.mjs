@@ -16,6 +16,7 @@ routers.get("/api/sample1", sample1Controller.getSample1)
 routers.get("/api/8-1", q8_1Controller.get8_1_1)
 routers.post("/api/8-1", q8_1Controller.post8_1_2)
 routers.put("/api/8-1", q8_1Controller.put8_1_3)
+routers.delete("/api/8-1", q8_1Controller.delete8_1_4)
 
 // client配下は、ブラウザサイドで実行されるファイル（HTML/JS/CSS/画像など）を配置する
 routers.use(express.static(`${path.resolve()}/client`))

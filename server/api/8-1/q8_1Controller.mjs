@@ -32,9 +32,15 @@ const put8_1_3 = (req, res) =>
     res.send(JSON.stringify({ status: "OK" ,postcode: postcode }))
 }
 
+const delete8_1_4 = (req, res) => 
+{
+    res.send(JSON.stringify({ status: "OK", code: req.query.code }))
+}
+
 export const q8_1Controller = 
 {
     get8_1_1,
     post8_1_2,
     put8_1_3,
+    delete8_1_4,
 }
