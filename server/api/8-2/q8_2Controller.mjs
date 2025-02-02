@@ -79,7 +79,30 @@ const put8_2_3 = (req, res) =>
     }))
 }
 
+const delete8_2_4 = (req, res) =>
+{
+    const { code } = req.query;
 
+    const predefinedData = 
+    {
+        code: "HC42-9824"
+    }
+
+    if (code !== predefinedData.code) 
+    {
+        res.send(JSON.stringify({
+            status: "error",
+            code: code,
+            cause: "not found code!"
+        }))
+        return;
+    }
+
+    res.send(JSON.stringify({
+        status: "OK",
+        code: code
+    }))
+}
 
 
 export const q8_2Controller = 
@@ -87,4 +110,5 @@ export const q8_2Controller =
     get8_2_1,
     post8_2_2,
     put8_2_3,
+    delete8_2_4,
 }
