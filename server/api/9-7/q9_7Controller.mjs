@@ -23,8 +23,30 @@ const getAll9_7_1 = async (req, res) =>
     res.send(JSON.stringify({ status: "success", list: result }))
 }
 
+const get9_7_2 = async (req, res) => 
+{
+    const { id } = req.params;
+  
+    try
+    {
+      const exam = await q9_7model.get9_7_2(id);
+  
+      if (!exam)
+    　{
+        return res.status(404).json({ status: "not found" });
+      }
+  
+      res.json({ status: "success", data: exam });
+    } catch (error) 
+    {
+      res.status(500).json({ status: "error", message: error.message });
+    }
+  }
+  
+
 export const q9_7Controller =
 {
     getOne9_7_1,
     getAll9_7_1,
+    get9_7_2,
 }

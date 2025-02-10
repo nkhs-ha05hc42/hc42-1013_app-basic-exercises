@@ -50,9 +50,18 @@ const selectOne = async (id) =>
     return results.rows.at(0)
 }
 
+const get9_7_2 = async (id) => 
+{
+    const sql = "SELECT * FROM exams WHERE id = $1;"
+    const result = await query(sql, [id]);
+  
+    return result.rows[0]
+}
+
 export const q9_7model = 
 {
     insertOne,
     selectAll,
     selectOne,
+    get9_7_2,
 }
