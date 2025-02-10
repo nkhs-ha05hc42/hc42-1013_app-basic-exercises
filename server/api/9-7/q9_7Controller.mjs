@@ -41,12 +41,23 @@ const get9_7_2 = async (req, res) =>
     {
       res.status(500).json({ status: "error", message: error.message });
     }
-  }
+}
   
+const post9_7_3 = async (req, res) => 
+{
+    const { user_id,year,month,day,name,score } = req.body;
+    if (!user_id || !year || !month || !day || !name || score === undefined) 
+    {
+        return res.send(JSON.stringify({ status: "error" }))
+    }
+    const result = await q9_7model.post9_7_3(user_id,year,month,day,name,score)
+    res.send(JSON.stringify({ status: "success", data: result }))
+}
 
 export const q9_7Controller =
 {
     getOne9_7_1,
     getAll9_7_1,
     get9_7_2,
+    post9_7_3,
 }

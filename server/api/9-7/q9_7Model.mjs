@@ -5,10 +5,10 @@ const insertOne = async (user_id,year,month,day,name,score) =>
     const insertQuery = `
     INSERT INTO exams(
     user_id,
-    year
-    month
-    day
-    name
+    year,
+    month,
+    day,
+    name,
     score
     )
     VALUES(
@@ -58,10 +58,36 @@ const get9_7_2 = async (id) =>
     return result.rows[0]
 }
 
+const post9_7_3 = async (user_id,year,month,day,name,score) => 
+{
+    const insertQuery = `
+    INSERT INTO exams(
+    user_id,
+    year,
+    month,
+    day,
+    name,
+    score
+    )
+    VALUES(
+    $1,
+    $2,
+    $3,
+    $4,
+    $5,
+    $6
+    )
+    RETURNING *;
+    `
+    const result = await query(insertQuery, [user_id,year,month,day,name,score])
+    return result.rows.at(0)
+}
+
 export const q9_7model = 
 {
     insertOne,
     selectAll,
     selectOne,
     get9_7_2,
+    post9_7_3,
 }
